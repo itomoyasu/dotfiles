@@ -1,0 +1,5 @@
+/*jslint regexp: true, browser: true, devel: true vars: true */
+/*global jQuery, $ */
+/*global Backbone */
+/*global Underscore */
+
