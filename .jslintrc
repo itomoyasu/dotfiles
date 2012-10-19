@@ -1,4 +1,4 @@
-/*jslint regexp: true, browser: true, devel: true vars: true */
+/*jslint regexp: true, browser: true, devel: true vars: true, node: true */
 /*global jQuery, $ */
 /*global Backbone */
 /*global Underscore */

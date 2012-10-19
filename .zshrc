@@ -11,7 +11,7 @@ setopt hist_ignore_dups
 setopt share_history
 
 # key bind for vim
-bindkey -v
+bindkey -e
 
 # autocomplete 
 autoload -U compinit 
@@ -76,4 +76,7 @@ export PATH=$PATH:/usr/local/Cordova/bin
 
 # PATH for jsx
 export PATH=$PATH:/$HOME/work/DeNA/JSX/bin
+
+# PATH for nodebrew
+export PATH=$PATH:$HOME/.nodebrew/current/bin
 

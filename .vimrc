@@ -11,8 +11,9 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'JavaScript-syntax'
 Bundle 'vim-scripts/AutoComplPop'
-Bundle 'hallettj/jslint.vim'
+" Bundle 'hallettj/jslint.vim'
 Bundle 'git://github.com/jsx/jsx.vim.git'
+Bundle 'mitechie/pyflakes-pathogen'
 
 filetype plugin on
 filetype indent on
