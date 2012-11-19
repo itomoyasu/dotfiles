@@ -29,11 +29,11 @@ colors
 
 case ${UID} in
 0)
-    PROMPT='%B%{${fg[red]}%}%/#%{${reset_color}%}%b '
-    PROMPT2='%B%{${fg[red]}%}%_#%{${reset_color}%}%b '
-    SPROMPT='%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b '
-    [ -n '${REMOTEHOST}${SSH_CONNECTION}' ] &&
-        PROMPT='%{${fg[red]}%}${HOST%%.*} ${PROMPT}'
+    PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
+    PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
+    SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+        PROMPT="%{${fg[red]}%}${HOST%%.*} ${PROMPT}"
     ;;
 *)
     # Color
@@ -62,12 +62,12 @@ alias ls="ls -G"
 alias la="ls -a"
 alias ll="ls -lag"
 
-alias cp='cp -iv'
-alias rm='rm -iv'
-alias mv='mv -iv'
+alias cp="cp -iv"
+alias rm="rm -iv"
+alias mv="mv -iv"
 
-alias firefox='open -a Firefox'
-alias chrome='open -a Google\ Chrome'
+alias firefox="open -a Firefox"
+alias chrome="open -a Google\ Chrome"
 
 
 # PATH for Homebrew
