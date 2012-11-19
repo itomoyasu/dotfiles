@@ -33,7 +33,7 @@ case ${UID} in
     PROMPT2='%B%{${fg[red]}%}%_#%{${reset_color}%}%b '
     SPROMPT='%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b '
     [ -n '${REMOTEHOST}${SSH_CONNECTION}' ] &&
-        PROMPT='%{${fg[cyan]}%}${HOST%%.*} ${PROMPT}'
+        PROMPT='%{${fg[red]}%}${HOST%%.*} ${PROMPT}'
     ;;
 *)
     # Color
@@ -47,7 +47,7 @@ case ${UID} in
     RPROMPT="${RESET}${WHITE}[${CYAN}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}"
     SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-        PROMPT="${HOST%%.*} %{$fg_bold[yellow]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}"
+        PROMPT="${HOST%%.*} %{$fg[yellow]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}"
     ;;
 esac
 
