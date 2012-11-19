@@ -19,28 +19,37 @@ compinit
 
 # set locale
 export LANG=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
 
-## the following lines are colored settings !
+
+# colored settings
+setopt prompt_subst
+autoload colors
+colors
+
 case ${UID} in
 0)
-#    PROMPT="%{[31m%}X %{[33m%}/ _ / %{[31m%}X %{[36m%}< "
-    PROMPT="%{[33m%}%n@%m > "
-    RPROMPT="%B%a{[31m%}%/#%{[m%}%b "
-    RPROMPT2="%B%{[31m%}%_#%{[m%}%b "
-    SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+    PROMPT='%B%{${fg[red]}%}%/#%{${reset_color}%}%b '
+    PROMPT2='%B%{${fg[red]}%}%_#%{${reset_color}%}%b '
+    SPROMPT='%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b '
+    [ -n '${REMOTEHOST}${SSH_CONNECTION}' ] &&
+        PROMPT='%{${fg[cyan]}%}${HOST%%.*} ${PROMPT}'
     ;;
 *)
-#    PROMPT="%{[31m%}X %{[33m%}/ _ / %{[31m%}X %{[36m%}< "
-    PROMPT="%{[33m%}%n@%m > "
-    RPROMPT="%{[31m%}%/%%%{[m%} "
-    RPROMPT2="%{[31m%}%_%%%{[m%} "
-    SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{[m%} "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+    # Color
+    DEFAULT="$%{\e[1;0m%}"
+    RESET="%{${reset_color}%}"
+    CYAN="%{${fg[cyan]}%}"
+    WHITE="%{${fg[white]}%}"
+    
+    # Prompt
+    PROMPT="%{$fg_bold[blue]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}"
+    RPROMPT="${RESET}${WHITE}[${CYAN}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}"
+    SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+        PROMPT="${HOST%%.*} %{$fg_bold[yellow]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}"
     ;;
-esac 
+esac
 
 ## correct uncorrect command
 setopt correct
