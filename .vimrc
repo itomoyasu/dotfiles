@@ -12,8 +12,10 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'JavaScript-syntax'
 Bundle 'vim-scripts/AutoComplPop'
 " Bundle 'hallettj/jslint.vim'
-Bundle 'git://github.com/jsx/jsx.vim.git'
+Bundle 'jsx/jsx.vim'
+Bundle 'nvie/vim-pep8'
 Bundle 'mitechie/pyflakes-pathogen'
+
 
 filetype plugin on
 filetype indent on
