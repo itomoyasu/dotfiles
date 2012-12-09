@@ -17,6 +17,16 @@ bindkey -e
 autoload -U compinit 
 compinit
 
+# auto directory pushd that you can get dirs list by cd -[tab]
+setopt auto_pushd
+
+# historical backward/forward search with linehead string binded to ^P/^N
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end 
+
 # set locale
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
@@ -53,6 +63,9 @@ esac
 
 ## correct uncorrect command
 setopt correct
+
+# compacked complete list display
+setopt list_packed
 
 ## no beep
 setopt nolistbeep
