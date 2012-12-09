@@ -15,7 +15,7 @@ Bundle 'vim-scripts/AutoComplPop'
 Bundle 'jsx/jsx.vim'
 Bundle 'nvie/vim-pep8'
 Bundle 'mitechie/pyflakes-pathogen'
-
+Bundle 'sudo.vim'
 
 filetype plugin on
 filetype indent on
