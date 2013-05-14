@@ -70,17 +70,20 @@ setopt list_packed
 setopt nolistbeep
 
 ## aliases
+#alias ls="ls -G"
 alias la="ls -a"
-alias ll="ls -lag"
+alias ll="ls -la"
 
 alias cp="cp -iv"
 alias rm="rm -iv"
 alias mv="mv -iv"
 
 
+export PATH=/sbin:/usr/sbin:/usr/local/bin/:$PATH
+
 # Path for Python2.7
-export PATH=/opt/python2.7/bin:$PATH
+# export PATH=/opt/python2.7/bin:$PATH
 # PATH for virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-source `which virtualenvwrapper.sh`
+# export WORKON_HOME=$HOME/.virtualenvs
+# source `which virtualenvwrapper.sh`
 
