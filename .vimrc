@@ -2,25 +2,31 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
+if has ('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand('~/.vim/bundle/'))
  
-Bundle 'gmarik/vundle'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'mattn/zencoding-vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'JavaScript-syntax'
-Bundle 'vim-scripts/AutoComplPop'
-" Bundle 'hallettj/jslint.vim'
-Bundle 'jsx/jsx.vim'
-Bundle 'nvie/vim-pep8'
-Bundle 'mitechie/pyflakes-pathogen'
-Bundle 'sudo.vim'
-Bundle 'hotchpotch/perldoc-vim'
-Bundle 'petdance/vim-perl'
-Bundle 'thinca/vim-quickrun'
-Bundle 'scrooloose/nerdtree.git'
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'gmarik/vundle'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'JavaScript-syntax'
+NeoBundle 'vim-scripts/AutoComplPop'
+" NeoBundle 'hallettj/jslint.vim'
+NeoBundle 'jsx/jsx.vim'
+NeoBundle 'nvie/vim-pep8'
+NeoBundle 'mitechie/pyflakes-pathogen'
+NeoBundle 'sudo.vim'
+NeoBundle 'hotchpotch/perldoc-vim'
+NeoBundle 'petdance/vim-perl'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'scrooloose/nerdtree.git'
+
+NeoBundleCheck
 
 filetype plugin on
 filetype indent on
