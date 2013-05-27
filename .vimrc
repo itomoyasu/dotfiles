@@ -51,7 +51,7 @@ set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
 
-""perl settings
+""perl setting
 autocmd! BufNewFile,BufRead *.psgi setf filetype=perl
 autocmd! BufNewFile,BufRead *.t setf filetype=perl
 
@@ -65,6 +65,7 @@ let g:neocomplcache_ctags_arguments_list = {
   \ 'perl' : '-R -h ".pm"'
   \ }
 let g:neocomplcache_snippets_dir = "~/.vim/snippets"
+
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
             \ 'default'    : '',
@@ -73,4 +74,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
 " for snippets
 imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
+
+" for nerdtree
+map <C-n> :NERDTreeToggle<CR>
 
