@@ -2,7 +2,7 @@
 
 set runtimepath=~/.vimperator/library,~/.vimperator 
 
-set gui=nobookmarks
+"" set gui=nobookmarks
 set hlsearch
 set visualbell
 set wildmode=full
@@ -11,8 +11,8 @@ set complete=sl
 
 ""**************************** Key mappings ********************************
 
-map j 5<C-e>
-map k 5<C-y>
+nnoremap j 3j
+nnoremap k 3k
 
 map h <A-Left>
 map l <A-Right>
@@ -26,9 +26,8 @@ let g:direct_sbm_use_services_by_tag='h'
 let g:direct_sbm_use_services_by_post='h'
 map s :sbm<Space>[
 
-let g:def_sbm_format="id,tags,comment"
-let g:def_sbms="hd"
-map v :viewSBMComments<CR>
+map v :viewSBMComments -format id,tags,comment -type h<CR> 
+map V :viewSBMComments -format id,tags,comment,timestamp -type h<CR> 
 
 map ,a :mr<Space>alc<Space>
 map ,g :mr<Space>goo<Space>

@@ -102,3 +102,6 @@ export PATH=$PATH:/$HOME/work/DeNA/JSX/bin
 # PATH for nodebrew
 export PATH=$PATH:$HOME/.nodebrew/current/bin
 
+# Path for GIT_EDITOR 
+export GIT_EDITOR="/usr/bin/vim"
+
