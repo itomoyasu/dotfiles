@@ -1,5 +1,6 @@
 " vundle setting
 set nocompatible
+set noswapfile
 filetype off
 
 if has ('vim_starting')
@@ -26,6 +27,11 @@ NeoBundle 'petdance/vim-perl'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/nerdtree.git'
 
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.git'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'c9s/cpan.vim'
+
 NeoBundleCheck
 
 filetype plugin on
@@ -35,6 +41,7 @@ syntax enable
 filetype on
 
 set encoding=utf-8
+set fileencodings=japan
 set fileencodings=utf8,iso-2022-jp,cp932,euc-jp
 
 ""search setting
@@ -77,10 +84,38 @@ let g:neocomplcache_dictionary_filetype_lists = {
             \ 'default'    : '',
             \ 'perl'       : $HOME . '/.vim/dict/perl.dict'
             \ }
-" for snippets
-imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
+
+" for neosnippets
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory="~/.vim/snippets"
 
 " for nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
+" for unite.vim
+let g:unite_enable_start_insert=1
+nnoremap <silent> ,b :<C-u>Unite buffer<CR>
+nnoremap <silent> ,f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,r :<C-u>Unite file_mru<CR>
+
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
+" for tabview
+set wildmenu
+
+" white space
+set list
+set listchars=tab:>-,extends:<,trail:-
+highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
