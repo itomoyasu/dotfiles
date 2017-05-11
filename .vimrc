@@ -12,25 +12,24 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'gmarik/vundle'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.git'
+NeoBundle 'Shougo/neomru.vim'
+
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'JavaScript-syntax'
 NeoBundle 'vim-scripts/AutoComplPop'
-" NeoBundle 'hallettj/jslint.vim'
-NeoBundle 'jsx/jsx.vim'
 NeoBundle 'nvie/vim-pep8'
 NeoBundle 'mitechie/pyflakes-pathogen'
-NeoBundle 'sudo.vim'
 NeoBundle 'hotchpotch/perldoc-vim'
 NeoBundle 'petdance/vim-perl'
+NeoBundle 'fatih/vim-go'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/nerdtree.git'
-
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.git'
+NeoBundle 'zchee/vim-flatbuffers'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'c9s/cpan.vim'
 
 call neobundle#end()
 
