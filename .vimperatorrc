@@ -2,7 +2,7 @@
 
 set runtimepath=~/.vimperator/library,~/.vimperator 
 
-"" set gui=nobookmarks
+set gui=nobookmarks,nonavigation
 set hlsearch
 set visualbell
 set wildmode=full
