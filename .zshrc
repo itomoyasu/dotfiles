@@ -13,8 +13,8 @@ setopt share_history
 # key bind for vim
 bindkey -e
 
-# autocomplete 
-autoload -U compinit 
+# autocomplete
+autoload -U compinit
 compinit
 
 # auto directory pushd that you can get dirs list by cd -[tab]
@@ -25,7 +25,7 @@ autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end 
+bindkey "^N" history-beginning-search-forward-end
 
 # set locale
 export LANG=ja_JP.UTF-8
@@ -51,7 +51,7 @@ case ${UID} in
     RESET="%{${reset_color}%}"
     CYAN="%{${fg[cyan]}%}"
     WHITE="%{${fg[white]}%}"
-    
+
     # Prompt
     PROMPT="%{$fg_bold[blue]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}"
     RPROMPT="${RESET}${WHITE}[${CYAN}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}"
@@ -79,10 +79,6 @@ alias cp="cp -iv"
 alias rm="rm -iv"
 alias mv="mv -iv"
 
-alias firefox="open -a Firefox"
-alias chrome="open -a Google\ Chrome"
-
-
 # PATH for Homebrew
 export PATH=/usr/local/bin:$PATH
 
@@ -93,15 +89,20 @@ export PATH=/usr/local/share/python:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 source `which virtualenvwrapper.sh`
 
-# PATH for Cordova(Phone Gap)
-export PATH=$PATH:/usr/local/Cordova/bin
-
-# PATH for jsx
-export PATH=$PATH:/$HOME/work/DeNA/JSX/bin
-
 # PATH for nodebrew
 export PATH=$PATH:$HOME/.nodebrew/current/bin
 
-# Path for GIT_EDITOR 
-export GIT_EDITOR="/usr/bin/vim"
+# perlbrewenv
+export PERLBREW_ROOT=$HOME/.perlbrew
+source ~/perl5/perlbrew/etc/bashrc
 
+# settings for direnv
+eval "$(direnv hook zsh)"
+
+# Go env
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
+# Path for GIT_EDITOR
+export GIT_EDITOR="/usr/bin/vim"
