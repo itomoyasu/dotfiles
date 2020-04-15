@@ -31,7 +31,6 @@ bindkey "^N" history-beginning-search-forward-end
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 
-
 # colored settings
 setopt prompt_subst
 autoload colors
@@ -71,9 +70,9 @@ setopt list_packed
 setopt nolistbeep
 
 ## aliases
-alias ls="ls -G"
-alias la="ls -a"
-alias ll="ls -lag"
+alias ls="exa --icons"
+alias la="exa -a --icons"
+alias ll="exa -la --icons"
 
 alias cp="cp -iv"
 alias rm="rm -iv"
@@ -82,27 +81,38 @@ alias mv="mv -iv"
 # PATH for Homebrew
 export PATH=/usr/local/bin:$PATH
 
-# PATH for python2.7
-export PATH=/usr/local/share/python:$PATH
-
-# PATH for virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-source `which virtualenvwrapper.sh`
+# GoEnv
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
 
 # PATH for nodebrew
-export PATH=$PATH:$HOME/.nodebrew/current/bin
-
-# perlbrewenv
-export PERLBREW_ROOT=$HOME/.perlbrew
-source ~/perl5/perlbrew/etc/bashrc
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # settings for direnv
 eval "$(direnv hook zsh)"
 
-# Go env
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
-
 # Path for GIT_EDITOR
 export GIT_EDITOR="/usr/bin/vim"
+
+# Path for adb tools
+export PATH=$PATH:~/Library/Android/sdk/platform-tools
+
+# anyenv
+if [ -d ${HOME}/.anyenv ] ; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+    for D in `ls $HOME/.anyenv/envs`
+    do
+        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tomoyasu.ishikawa/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tomoyasu.ishikawa/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tomoyasu.ishikawa/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tomoyasu.ishikawa/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Path for goapp
+export PATH=$PATH:~/google-cloud-sdk/platform/google_appengine
