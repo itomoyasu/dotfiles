@@ -92,9 +92,6 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 # settings for direnv
 eval "$(direnv hook zsh)"
 
-# Path for GIT_EDITOR
-export GIT_EDITOR="/usr/bin/vim"
-
 # Path for adb tools
 export PATH=$PATH:~/Library/Android/sdk/platform-tools
 
