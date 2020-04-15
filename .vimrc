@@ -1,39 +1,26 @@
-" vundle setting
 set nocompatible
 set noswapfile
 filetype off
 
-if has ('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-call neobundle#begin(expand('~/.vim/bundle/'))
- 
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/plugged')
 
-NeoBundle 'gmarik/vundle'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.git'
-NeoBundle 'Shougo/neomru.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/defx.nvim'
+Plug 'Shougo/neomru.vim'
 
-NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'JavaScript-syntax'
-NeoBundle 'vim-scripts/AutoComplPop'
-NeoBundle 'nvie/vim-pep8'
-NeoBundle 'mitechie/pyflakes-pathogen'
-NeoBundle 'hotchpotch/perldoc-vim'
-NeoBundle 'petdance/vim-perl'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'scrooloose/nerdtree.git'
-NeoBundle 'zchee/vim-flatbuffers'
-NeoBundle 'mattn/emmet-vim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'mattn/zencoding-vim'
+Plug 'mattn/emmet-vim'
+Plug 'vim-scripts/AutoComplPop'
+Plug 'nvie/vim-pep8'
+Plug 'fatih/vim-go'
+Plug 'posva/vim-vue'
+Plug 'zchee/vim-flatbuffers'
+Plug 'leafgarland/typescript-vim'
 
-call neobundle#end()
-
-NeoBundleCheck
+call plug#end()
 
 filetype plugin on
 filetype indent on
@@ -42,14 +29,13 @@ syntax enable
 filetype on
 
 set encoding=utf-8
-set fileencodings=japan
-set fileencodings=utf8,iso-2022-jp,cp932,euc-jp
+set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
+set fileformats=unix,dos,mac
 
 ""search setting
 set wrapscan
 set hlsearch
-nmap <Esc><Esc> : nohlsearch<CR><Esc>
-
+nmap <Esc><Esc> : nohlsearch<CR><Esc> 
 ""edit setting
 set number
 set showmatch
@@ -65,53 +51,12 @@ set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
 
-""perl setting
-autocmd! BufNewFile,BufRead *.psgi setf filetype=perl
-autocmd! BufNewFile,BufRead *.t setf filetype=perl
-
 ""color setting
 colorscheme darkblue
 
-""neocomplcache
-let g:neocomplcache_enable_at_startup = 1
- 
-let g:neocomplcache_ctags_arguments_list = {
-  \ 'perl' : '-R -h ".pm"'
-  \ }
-let g:neocomplcache_snippets_dir = "~/.vim/snippets"
+let g:deoplete#enable_at_startup = 1
 
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-            \ 'default'    : '',
-            \ 'perl'       : $HOME . '/.vim/dict/perl.dict'
-            \ }
-
-" for neosnippets
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory="~/.vim/snippets"
-
-" for nerdtree
 map <C-n> :NERDTreeToggle<CR>
-
-" for unite.vim
-let g:unite_enable_start_insert=1
-nnoremap <silent> ,b :<C-u>Unite buffer<CR>
-nnoremap <silent> ,f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,r :<C-u>Unite file_mru<CR>
-
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 " for tabview
 set wildmenu
@@ -120,3 +65,32 @@ set wildmenu
 set list
 set listchars=tab:>-,extends:<,trail:-
 highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
+
+" js indentation
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
+" TypeScript
+autocmd BufRead,BufNewFile *.ts set filetype=typescript
+
+" denite.vim mappings
+nmap <silent> ,f :<C-u>Denite file/rec<CR>
+nmap <silent> ,g :<C-u>Denite grep<CR>
+nmap <silent> ,b :<C-u>Denite buffer<CR>
+nmap <silent> ,r :<C-u>Denite file_mru<CR>
+
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+        \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+        \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+        \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+        \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+        \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+        \ denite#do_map('toggle_select').'j'
+endfunction
