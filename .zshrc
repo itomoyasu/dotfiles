@@ -79,7 +79,7 @@ alias rm="rm -iv"
 alias mv="mv -iv"
 
 # PATH for Homebrew
-export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/bin:$PATH"
 
 # GoEnv
 export GOENV_ROOT="$HOME/.goenv"
@@ -87,13 +87,16 @@ export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 
 # PATH for nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH="$HOME/.nodebrew/current/bin:$PATH"
 
 # settings for direnv
 eval "$(direnv hook zsh)"
 
 # Path for adb tools
-export PATH=$PATH:~/Library/Android/sdk/platform-tools
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+
+# Path for flutter
+export PATH="$HOME/git/flutter/bin:$PATH"
 
 # anyenv
 if [ -d ${HOME}/.anyenv ] ; then
@@ -112,4 +115,4 @@ if [ -f '/Users/tomoyasu.ishikawa/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 if [ -f '/Users/tomoyasu.ishikawa/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tomoyasu.ishikawa/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Path for goapp
-export PATH=$PATH:~/google-cloud-sdk/platform/google_appengine
+export PATH="$HOME/google-cloud-sdk/platform/google_appengine:$PATH"

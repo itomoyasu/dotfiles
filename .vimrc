@@ -56,8 +56,6 @@ colorscheme darkblue
 
 let g:deoplete#enable_at_startup = 1
 
-map <C-n> :NERDTreeToggle<CR>
-
 " for tabview
 set wildmenu
 
