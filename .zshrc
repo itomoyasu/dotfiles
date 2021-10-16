@@ -81,10 +81,15 @@ alias mv="mv -iv"
 # PATH for Homebrew
 export PATH="/usr/local/bin:$PATH"
 
-# GoEnv
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
+# GOPATH
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+# GOROOT
+export GOROOT="$HOME/.local/go1.17"
+
+export PATH="$GOROOT/bin:$PATH"
+export GO111MODULE=on
 
 # PATH for nodebrew
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
@@ -97,6 +102,8 @@ export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 # Path for flutter
 export PATH="$HOME/git/flutter/bin:$PATH"
+
+export EDITOR=vi
 
 # anyenv
 if [ -d ${HOME}/.anyenv ] ; then
