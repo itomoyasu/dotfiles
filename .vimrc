@@ -15,10 +15,24 @@ Plug 'mattn/zencoding-vim'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'nvie/vim-pep8'
-Plug 'fatih/vim-go'
 Plug 'posva/vim-vue'
-Plug 'zchee/vim-flatbuffers'
 Plug 'leafgarland/typescript-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-lsp-icons'
+Plug 'mattn/vim-goimports'
+
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+call plug#end()
+
+
 
 call plug#end()
 
@@ -51,10 +65,12 @@ set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
 
+
 ""color setting
 colorscheme darkblue
 
 let g:deoplete#enable_at_startup = 1
+let mapleader = "\<Space>"
 
 " for tabview
 set wildmenu
@@ -71,10 +87,22 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
 " denite.vim mappings
-nmap <silent> ,f :<C-u>Denite file/rec<CR>
+nmap <silent> ,f :<C-u>DeniteBufferDir file/rec<CR>
 nmap <silent> ,g :<C-u>Denite grep<CR>
+nmap <silent> ,G :<C-u>DeniteCursorWord grep<CR>
 nmap <silent> ,b :<C-u>Denite buffer<CR>
 nmap <silent> ,r :<C-u>Denite file_mru<CR>
+
+" vim-lsp
+nmap <silent> gd :LspDefinition<CR>
+nmap <silent> <f2> :LspRename<CR>
+nmap <silent> <Leader>d :LspTypeDefinition<CR>
+nmap <silent> <Leader>r :LspReferences<CR>
+nmap <silent> <Leader>i :LspImplementation<CR>
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:asyncomplete_popup_delay = 200
+let g:lsp_text_edit_enabled = 0
 
 " Define mappings
 autocmd FileType denite call s:denite_my_settings()
